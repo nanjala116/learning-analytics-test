@@ -327,6 +327,14 @@ test(no_direct_evidence_preserves_prior) :-
     posterior_from_score(0.63, 0, 0, Posterior),
     assertion(abs(Posterior - 0.63) < 0.000001).
 
+test(documented_ten_item_posterior_examples) :-
+    posterior_from_score(0.80, 0, 10, ZeroOfTen),
+    posterior_from_score(0.80, 5, 10, FiveOfTen),
+    posterior_from_score(0.80, 8, 10, EightOfTen),
+    assertion(abs(ZeroOfTen - 0.241824) < 0.000001),
+    assertion(abs(FiveOfTen - 0.698675) < 0.000001),
+    assertion(abs(EightOfTen - 0.884036) < 0.000001).
+
 test(learner_estimation_returns_probabilities) :-
     estimate_learner([score(counting_and_number_sense, 2, 3),
                       score(place_value, 3, 3)], Estimates),
